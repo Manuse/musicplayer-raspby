@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+		    <div class="col-md-offset-2 col-md-8 col-md-offset-2 bajar col-xs-12">
+		        <form th:action="@{/login}" method="post" style="padding:25px; border:2px ridge rgb(224, 219, 219)">
+		            <div class="form-inline">
+		                <label style="width: 10%" class="label-login">Nombre </label>
+		                <input type="text" style="width: 35%" class="form-control input-login" id="username" th:name="username">
+		                <span class="span-pull" style="margin-right: 5%;"></span>
+		                <label class="label-login" style="width: 15%" >Contraseña</label>
+		                <input type="password" id="password" style="width: 32%" class="form-control input-login" th:name="password">
+		                <br>
+		                <div class="form-inline">
+			                <input type="checkbox" th:name="rememberme" />
+			                <small>Recordar</small>
+		                </div>
+		                <br>
+		                <br>	
+		                <input class="btn btn-primary btn-block" type="submit" value="enviar">
+		                <h1 th:text="${error}"></h1>
+		            </div>
+		        </form>
+		    </div>
+		</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

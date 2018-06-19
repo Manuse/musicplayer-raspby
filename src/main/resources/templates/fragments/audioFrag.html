@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>audio</title>
+</head>
+
+<body>
+    <div th:fragment="audio">
+        <div>
+            <audio th:src="${audioUrl}" hidden id="player"></audio>
+        </div>
+        <div class="bg-audio row">
+            <div class="col-1">
+                <button id="play" class="btn btn-sm btn-light oi oi-media-play"></button>
+                <button id="pause" style="display: none;" class="btn btn-sm btn-light oi oi-media-pause"></button>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <label for="duration">
+                        <span id="currentTime">0:00</span>/
+                        <span id="totalTime">0:00</span>
+                    </label>
+                    <div class="col-9">
+                        <input type="range" id="duration" value="0" min="0" max="0" class="slider">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                	<div>
+	                    <label for="volume">
+	                        <span class="oi oi-volume-high"></span>
+	                        <span class="oi oi-volume-off" hidden></span>
+	                    </label>
+                    </div>
+                    <div class="col-9">
+                        <input type="range" id="volume" value="100" min="0" max="100" class="slider volume">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p>
+                <strong id="currentSong"></strong>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

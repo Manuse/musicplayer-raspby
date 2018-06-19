@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>audio</title>
+</head>
+
+<body>
+    <div th:fragment="song">
+        <h5>Canciones</h5>
+        <div class="bg-white">
+            <table id="tableSong" class="table table-hover" style="width:100%">
+                <thead class="text-center">
+                    <tr>
+                        <th>Status</th>
+                        <th>Nombre</th>
+                        <th>Duracion</th>
+                        <th>Borrar</th>
+                        <th th:hidden="${isPlaylist == null or !isPlaylist}">Quitar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodySong">
+                    <tr th:each="song : ${songs}"  th:attr="data-id=${song.id}, data-name=${song.name}">
+                        <td  data-function="playMusic" class="text-center align-middle"><span th:class="${song.status ? 'oi oi-check' : 'oi oi-x'}"></span></td>
+                        <td  data-function="playMusic" th:text="${#strings.replace(song.name, '.mp3','')}">nombre</td>
+                        <td  data-function="playMusic" class="text-center align-middle" th:text="${song.duration}">duracion</td>
+                        <td  th:hidden="${!song.status}" data-function="deleteSong" class="text-center align-middle"><span class="oi oi-trash"></span></td>
+                        <td  data-function="quitSongPlaylist" th:hidden="${isPlaylist == null or !isPlaylist}" class="text-center align-middle"><span class="oi oi-minus"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div>
+            <button class="btn btn-success" onclick="updateListSong()">Actualizar lista</button>
+            <form id="uploadFile" th:action="@{song/upload-multiple-Song}" method="POST" enctype="multipart/form-data" style="display: none">
+            	<input type="file" accept=".mp3" id="file" name="file" multiple>
+            </form>
+            <label id="labelUpload" for="file" style="display: none"></label>
+            <button id="btnUpload1" class="btn btn-success"><span class="oi oi-cloud-upload"></span> Subir</button>
+            <button id="sort" th:hidden="${isPlaylist == null or !isPlaylist or #lists.isEmpty(songs)}" class="btn btn-success">Cambiar orden</button>
+            <button id="repeatSong" class="oi oi-loop-circular btn btn-primary"></button>
+            <button id="randomSong" class="oi oi-random btn btn-primary"></button>
+        </div>
+    </div>
+</body>
+
+</html>
